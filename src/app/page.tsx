@@ -134,7 +134,7 @@ export default function Home() {
               Best Business Management Platform
             </h2>
             <div className="mt-6 max-w-3xl mx-auto">
-              <p className="text-lg text-gray-600">DoStartup is more than a service, we're your dedicated partner in navigating the Indian business landscape. We understand the challenges startups and enterprises face.
+              <p className="text-lg text-gray-600">DoStartup is more than a service, we are your dedicated partner in navigating the Indian business landscape. We understand the challenges startups and enterprises face.
               </p>
             </div>
           </div>
