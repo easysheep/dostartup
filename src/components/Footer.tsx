@@ -88,22 +88,11 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Payment logos (simulated with text/icons or replace with actual images) */}
-      <div className="flex justify-center gap-6 p-6 opacity-70">
-        <span className="uppercase">Visa</span>
-        <span>MasterCard</span>
-        <span>Maestro</span>
-        <span>Amex</span>
-        <span>Paytm</span>
-        <span>MobiKwik</span>
-        <span>PayU</span>
-      </div>
-
       {/* Bottom disclaimer */}
-      <div className="text-center text-xs text-gray-300 px-4 pb-4">
+      <div className="text-center text-xs text-gray-300 px-4 pb-4 mt-5">
         By continuing past this page, you agree to our <span className="text-orange-500">Terms & Conditions</span>, <span className="text-orange-500">Privacy Policy</span>, <span className="text-orange-500">Refund Policy</span>, <span className="text-orange-500">Confidentiality Policy</span>, <span className="text-orange-500">Disclaimer</span>.
         <br />
-        © 2025 - Logo Private Limited. All rights reserved.
+        © 2025 - DoStartup Private Limited. All rights reserved.
       </div>
     </footer>
   );
