@@ -133,10 +133,15 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      
+      <a
+        href="https://api.whatsapp.com/send?phone=9999644807&text=Hello,%20DoStartup"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div className="h-[40px] w-[40px] flex fixed z-10 bottom-10 right-10 cursor-pointer md:bottom-20 md:h-[50px] md:w-[50px]">
           <img src="whatsapp2.png" alt="" />
         </div>
+      </a>
 
       {/* Hero Section */}
       <section className="px-4 py-20 sm:px-6 lg:px-8 max-w-7xl mx-auto">
