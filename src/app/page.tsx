@@ -139,7 +139,7 @@ export default function Home() {
         rel="noopener noreferrer"
       >
         <div className="h-[40px] w-[40px] flex fixed z-10 bottom-10 right-10 cursor-pointer md:bottom-20 md:h-[50px] md:w-[50px]">
-          <img src="whatsapp2.png" alt="" />
+          <img src="whatsapp2.png" alt="whatsapp.png" />
         </div>
       </a>
 
