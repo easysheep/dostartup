@@ -13,17 +13,17 @@ const Header = () => {
   // const [activeIndex, setActiveIndex] = useState(0);
 
   // Type definitions for menu structure
-  interface MenuLink {
-    name: string;
-    href: string;
-    description?: string;
-  }
+  // interface MenuLink {
+  //   name: string;
+  //   href: string;
+  //   description?: string;
+  // }
 
-  interface SubMenuItem {
-    title: string;
-    description?: string;
-    links?: MenuLink[];
-  }
+  // interface SubMenuItem {
+  //   title: string;
+  //   description?: string;
+  //   links?: MenuLink[];
+  // }
 
   // interface MenuItem {
   //   title: string;
