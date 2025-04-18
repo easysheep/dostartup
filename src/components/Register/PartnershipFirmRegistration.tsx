@@ -1,19 +1,7 @@
 "use client";
-import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 
-const registrationTypes = [
-  { name: "Private Limited Company", slug: "private-limited-company" },
-  { name: "One Person Company (OPC)", slug: "opc" },
-  { name: "Partnership Firm", slug: "partnership-firm" },
-  { name: "MSME Registration", slug: "msme" },
-  { name: "IEC Code", slug: "iec" },
-  { name: "PSARA License", slug: "psara" },
-  { name: "CE Certification", slug: "ce" },
-  { name: "NBFC Registration", slug: "nbfc" },
-  { name: "Plastic Waste Authorization", slug: "plastic-waste" },
-  { name: "GST Registration", slug: "gst" },
-];
+
 
 interface Benefit {
   id: number;
