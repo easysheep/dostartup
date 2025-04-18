@@ -72,7 +72,7 @@ const benefits: Benefit[] = [
   },
 ];
 
-export default function RegisterPage() {
+export default function PartnershipFirmRegistration() {
   const [progress, setProgress] = useState(0);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
 
@@ -89,20 +89,39 @@ export default function RegisterPage() {
   }, []);
 
   return (
-    <div className="max-w-5xl mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold mb-8 text-center">Choose a Registration Type</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {registrationTypes.map((type) => (
-          <Link
-            key={type.slug}
-            href={`/register/${type.slug}`}
-            className="p-5 bg-white shadow-md hover:shadow-xl transition rounded-xl border border-gray-200"
-          >
-            <h2 className="text-xl font-semibold text-blue-600">{type.name}</h2>
-            <p className="text-gray-500 text-sm mt-2">Click to view details</p>
-          </Link>
-        ))}
+    <>
+      <div className="flex flex-col md:flex-row ">
+        
+       {/* left panel */}
+        <div className="md:w-1/3 sticky top-0 h-screen flex gap-4 justify-center items-center p-6 bg-white">
+          <h2 className="text-3xl font-bold text-[#1D293D] text-center mb-6">
+            Benefits of Partnership Firm Online Registration
+          </h2>
+          <div className="w-3 h-72 bg-gray-200 rounded-full relative overflow-hidden">
+            <div
+              className="absolute top-0 w-2 bg-[#7CD955] rounded-full transition-all duration-200 ease-in-out"
+              style={{ height: `${progress}%` }}
+            />
+          </div>
+        </div>
+
+        {/* right panel */}
+        <div className="md:w-2/3 p-6 space-y-3 mt-[100px] pl-25">
+          {benefits.map((b, idx) => (
+            <section
+              key={b.id}
+              ref={(el) => (sectionRefs.current[idx] = el)}
+              className="min-h-screen"
+            >
+              <h3 className="text-xl font-bold text-[#1D293D] mb-4">
+                {b.title}
+              </h3>
+              <p className="text-gray-700 leading-relaxed text-lg ">{b.content}</p>
+            </section>
+          ))}
+        </div>
       </div>
-    </div>
+
+    </>
   );
 }
