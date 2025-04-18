@@ -14,6 +14,7 @@ const registrationTypes = [
   { name: "NBFC Registration", slug: "nbfc", emoji: "🏦" },
   { name: "Plastic Waste Authorization", slug: "plastic-waste", emoji: "♻️" },
   { name: "GST Registration", slug: "gst", emoji: "💸" },
+  
 ];
 
 export default function RegisterPage() {
