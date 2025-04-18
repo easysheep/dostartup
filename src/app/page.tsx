@@ -1,10 +1,55 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+
+const heroImages = [
+  "/hero1.jpg",
+  "/hero2.jpg",
+  "/hero3.jpg",
+];
+
+const services = [
+  {
+    title: "Private Limited Company Registration",
+    description:
+      "Get your company registered hassle-free with our expert guidance.",
+    image: "/private.jpg",
+    link: "/register/private-limited-company",
+  },
+  {
+    title: "One Person Company Registration",
+    description: "Register your OPC and enjoy limited liability benefits.",
+    image: "/opc.jpg",
+    link: "/register/one-person-company",
+  },
+  {
+    title: "MSME Registration",
+    description:
+      "Boost your business with MSME registration and avail government benefits.",
+    image: "/msme.jpg",
+    link: "/register/msme",
+  },
+  {
+    title: "GST Registration",
+    description:
+      "Get your GST number quickly and efficiently with our experts.",
+    image: "/gst.jpg",
+    link: "/register/gst",
+  },
+];
 
 export default function Home() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentHero, setCurrentHero] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHero((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,355 +58,158 @@ export default function Home() {
     }
   };
 
-  // Data for components
-  const topServices = [
-    "Compliance Tracker",
-    "Launch My Business",
-    "Compliance Solutions",
-    "Business Incorporation",
-    "Trademark Transfer",
-    "PSARA Certification",
-    "EPR Compliance for E-Waste",
-    "Explore More",
-  ];
-
-  const servicesDetails = [
-    {
-      title: "Startup Registration",
-      description:
-        "Registering a new business can be challenging, but we strive to ensure maximum ease of registration...",
-    },
-    {
-      title: "Tax Auditing",
-      description:
-        "Managing taxes is not easy but crucial for business. Our specialists guarantee precise tax audits...",
-    },
-    {
-      title: "Environmental Consultancy",
-      description:
-        "We help businesses adopt sustainable practices and comply with eco-friendly policies...",
-    },
-    {
-      title: "Advisory and Consultancy",
-      description:
-        "Our specialists provide customized advice tailored to your unique situation...",
-    },
-    {
-      title: "Regulatory (BIS, CDSCO, ISO)",
-      description:
-        "We help with compliance and obtaining necessary certifications like BIS, CDSCO, and ISO...",
-    },
-    {
-      title: "Licensing",
-      description:
-        "We handle everything from license application to approval, ensuring your business is fully compliant...",
-    },
-    {
-      title: "On-Demand CA/CS Services",
-      description:
-        "Whether you need a Chartered Accountant or Company Secretary...",
-    },
-    {
-      title: "Free Business Templates and DPR",
-      description:
-        "We provide various templates to streamline your paperwork...",
-    },
-  ];
-
-  const processSteps = [
-    {
-      title: "Deep-Dive Research",
-      description: "We analyze your unique needs and market trends.",
-    },
-    {
-      title: "Collaborative Strategy Sessions",
-      description: "Your vision + our expertise = actionable plans.",
-    },
-    {
-      title: "Innovation Lab",
-      description: "Custom solutions designed for scalability.",
-    },
-    {
-      title: "Agile Revisions",
-      description: "Your feedback shapes our work—no rigid templates.",
-    },
-    {
-      title: "Seamless Execution",
-      description: "From paperwork to launch, we've got you covered.",
-    },
-  ];
-
-  const whyUsPoints = [
-    {
-      icon: "💰",
-      title: "Transparent Pricing",
-      description: "No hidden fees.",
-    },
-    {
-      icon: "💻",
-      title: "Tech-Driven Tools",
-      description: "Streamline processes with our platform.",
-    },
-    {
-      icon: "👤",
-      title: "Dedicated Advisor",
-      description: "One point of contact for all needs.",
-    },
-    {
-      icon: "🌱",
-      title: "Eco-Conscious",
-      description: "Green business practices integrated.",
-    },
-  ];
-
-  const stats = [
-    {
-      value: "INDIA'S LARGEST LEGAL TECH COMPANY",
-      description:
-        "Complete business compliance solutions powered by technology and experts.",
-    },
-    {
-      value: "99.9% CLIENT SATISFACTION",
-      description: "Expert services refined to meet your exact requirements.",
-    },
-    {
-      value: "EXCELLENT ADVISORY SERVICES",
-      description:
-        "India's most extensive professional network for your success.",
-    },
-  ];
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
+      {/* WhatsApp Icon */}
       <a
         href="https://api.whatsapp.com/send?phone=9999644807&text=Hello,%20DoStartup"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <div className="h-[40px] w-[40px] flex fixed z-10 bottom-10 right-10 cursor-pointer md:bottom-20 md:h-[50px] md:w-[50px]">
-          <img src="whatsapp2.png" alt="whatsapp.png" />
+        <div className="fixed bottom-10 right-10 z-50 h-[60px] w-[60px] md:h-[70px] md:w-[70px]">
+          <img src="/whatsapp2.png" alt="whatsapp" />
         </div>
       </a>
 
       {/* Hero Section */}
-      <section className="px-4 py-20 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-            <span className="block">Simplify Your Business </span>
-            <span className="block text-emerald-600">
-              Compliance & Management
-            </span>
+      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+        <motion.div
+          key={currentHero}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 bg-cover bg-center z-0"
+          style={{
+            backgroundImage: `url(${heroImages[currentHero]})`,
+            filter: "brightness(0.7)",
+          }}
+        />
+        <div className="relative z-10 text-center px-6">
+          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold drop-shadow-lg">
+            Simplify Your Business <br />
+            <span className="text-emerald-400">Compliance & Management</span>
           </h1>
-          <p className="mt-6 max-w-lg mx-auto text-xl text-gray-600">
+          <p className="mt-4 text-white text-lg md:text-xl">
             Partner With Us.
           </p>
 
-          <form onSubmit={handleSearch} className="mt-10 max-w-md mx-auto">
+          <form onSubmit={handleSearch} className="mt-8 max-w-xl mx-auto">
             <div className="relative">
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search for compliance services..."
-                spellCheck={false}
-                className="w-full px-6 py-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-lg"
+                className="w-full px-6 py-4 rounded-lg border-2 border-white bg-white bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-lg"
               />
               <button
                 type="submit"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-emerald-600 text-white p-2 rounded-md hover:bg-emerald-700"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-emerald-600 text-white p-2 rounded-md hover:bg-emerald-700"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
+                🔍
               </button>
             </div>
           </form>
-
-          <div className="mt-16">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-              Top services for you
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              {topServices.map((service, index) => (
-                <div
-                  key={index}
-                  onClick={() =>
-                    router.push(
-                      `/services/${service.toLowerCase().replace(/\s+/g, "-")}`
-                    )
-                  }
-                  className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-100 hover:border-emerald-200 text-center"
-                >
-                  <div className="text-emerald-600 mb-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-8 w-8 mx-auto"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="font-medium text-gray-800">{service}</h3>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-16 pt-6 border-t border-gray-200">
-            <p className="text-gray-600">
-              Trusted by 42,800+ Clients Worldwide | ★★★★★ 4.9 Rating
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Who We Are Section */}
-      <section className="bg-emerald-50 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">WHO ARE WE?</h2>
-          <h3 className="text-4xl font-bold text-emerald-600 mb-6">
-            DoStartup - Empowering Startups, Every Step of the Way
-          </h3>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            At Dostartup, we combine expertise with passion to help your
-            business thrive. From ideation to execution, our tailored solutions
-            ensure compliance, innovation, and growth.
-          </p>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Best Business Management Platform
-            </h2>
-            <div className="mt-6 max-w-3xl mx-auto">
-              <p className="text-lg text-gray-600">
-                DoStartup is more than a service, we are your dedicated partner
-                in navigating the Indian business landscape. We understand the
-                challenges startups and enterprises face.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {servicesDetails.map((service, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center text-gray-800">
+            Our Top Services
+          </h2>
+          <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {services.map((service, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition"
+                onClick={() => router.push(service.link)}
               >
-                <div className="text-emerald-600 mb-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-10 w-10"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mt-2">
+                    {service.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600">{service.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-16">
-            WHY DoStartup
-          </h2>
+      {/* About Us Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-800">Who We Are</h2>
+          <p className="mt-6 text-gray-600 text-lg">
+            At DoStartup, we’re dedicated to simplifying legal compliance and
+            registration processes for startups and small businesses. Our
+            platform offers expert guidance and seamless services to help you
+            grow your business with confidence.
+          </p>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyUsPoints.map((point, index) => (
-              <div
-                key={index}
-                className="text-center p-6 border border-gray-100 rounded-lg hover:shadow-md transition-shadow"
+      {/* Why Choose Us */}
+      <section className="py-16 bg-gray-100">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-10">
+            Why Choose DoStartup?
+          </h2>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { title: "Expert Guidance", icon: "📘" },
+              { title: "Fast Processing", icon: "⚡" },
+              { title: "Affordable Pricing", icon: "💰" },
+              { title: "Reliable Support", icon: "📞" },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg"
               >
-                <div className="text-4xl mb-4">{point.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  {point.title}
+                <div className="text-4xl mb-3">{item.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-700">
+                  {item.title}
                 </h3>
-                <p className="text-gray-600">{point.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="bg-emerald-600 text-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <h3 className="text-2xl font-bold mb-4">{stat.value}</h3>
-                <p className="text-emerald-100">{stat.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Process Section */}
-      <section className="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Our Process
-            </h2>
-            <h3 className="text-2xl text-emerald-600">
-              How We Deliver Excellence
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-            {processSteps.map((step, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center"
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-10">
+            Our Achievements
+          </h2>
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { stat: "2000+", label: "Startups Registered" },
+              { stat: "1500+", label: "MSME/IEC Certifications" },
+              { stat: "500+", label: "GST Filings" },
+              { stat: "100+", label: "NBFC/PSARA Licenses" },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.05 }}
+                className="text-center"
               >
-                <div className="bg-emerald-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                  <span className="text-emerald-600 text-2xl font-bold">
-                    {index + 1}
-                  </span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  {step.title}
+                <h3 className="text-4xl font-bold text-emerald-600">
+                  {item.stat}
                 </h3>
-                <p className="text-gray-600">{step.description}</p>
-              </div>
+                <p className="text-gray-700 mt-2">{item.label}</p>
+              </motion.div>
             ))}
           </div>
         </div>
