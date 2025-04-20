@@ -1,7 +1,8 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 
-interface Benefit {
+interface Benefit 
+{
   id: number;
   title: string;
   content: string;
