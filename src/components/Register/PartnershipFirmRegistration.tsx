@@ -1,8 +1,10 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
 
-interface Benefit 
-{
+import { useRef, useEffect, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
+interface Benefit {
   id: number;
   title: string;
   content: string;
@@ -61,7 +63,6 @@ const benefits: Benefit[] = [
 
 export default function PartnershipFirmRegistration() {
   const [progress, setProgress] = useState(0);
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const handleScroll = () => {
     const scrollTop = window.scrollY;
@@ -75,35 +76,64 @@ export default function PartnershipFirmRegistration() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row bg-gray-50">
       {/* Left Panel */}
-      <div className="md:w-1/3 sticky top-0 h-screen flex flex-col gap-4 justify-center items-center p-6 bg-white">
-        <h2 className="text-3xl font-bold text-[#1D293D] text-center mb-6">
+      <div className="md:w-1/3 sticky top-0 h-screen flex flex-col gap-6 justify-center items-center p-6 bg-white shadow-md z-10">
+        <motion.h2
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl font-bold text-[#1D293D] text-center"
+        >
           Benefits of Partnership Firm Online Registration
-        </h2>
+        </motion.h2>
+
         <div className="w-3 h-72 bg-gray-200 rounded-full relative overflow-hidden">
-          <div
-            className="absolute top-0 w-2 bg-[#7CD955] rounded-full transition-all duration-200 ease-in-out"
-            style={{ height: `${progress}%` }}
+          <motion.div
+            animate={{ height: `${progress}%` }}
+            transition={{ ease: "easeOut", duration: 0.4 }}
+            className="absolute top-0 w-3 bg-[#7CD955] rounded-full"
           />
         </div>
       </div>
 
       {/* Right Panel */}
-      <div className="md:w-2/3 p-6 space-y-12 mt-[100px]">
-        {benefits.map((b, idx) => (
-          <div
-            key={b.id}
-            ref={(el) => {
-              sectionRefs.current[idx] = el;
-            }}
-            className="min-h-screen"
-          >
-            <h3 className="text-xl font-bold text-[#1D293D] mb-4">{b.title}</h3>
-            <p className="text-gray-700 leading-relaxed text-lg">{b.content}</p>
-          </div>
-        ))}
+      <div className="md:w-2/3 p-6 space-y-24 mt-[100px]">
+        {benefits.map((b) => {
+          const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+          const controls = useAnimation();
+
+          useEffect(() => {
+            if (inView) controls.start("visible");
+          }, [inView, controls]);
+
+          return (
+            <motion.div
+              key={b.id}
+              ref={ref}
+              initial="hidden"
+              animate={controls}
+              variants={fadeInUp}
+              className="min-h-[60vh] bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
+            >
+              <h3 className="text-2xl font-semibold text-[#1D293D] mb-4">{b.title}</h3>
+              <p className="text-gray-700 leading-relaxed text-lg">{b.content}</p>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );
