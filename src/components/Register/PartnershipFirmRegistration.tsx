@@ -1,21 +1,5 @@
 "use client";
-import Link from "next/link";
-import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-
-const registrationTypes = [
-  { name: "Private Limited Company", slug: "private-limited-company", emoji: "🏢" },
-  { name: "One Person Company (OPC)", slug: "opc", emoji: "👤" },
-  { name: "Partnership Firm", slug: "partnership-firm", emoji: "🤝" },
-  { name: "MSME Registration", slug: "msme", emoji: "🏭" },
-  { name: "IEC Code", slug: "iec", emoji: "📦" },
-  { name: "PSARA License", slug: "psara", emoji: "🛡️" },
-  { name: "CE Certification", slug: "ce", emoji: "✅" },
-  { name: "NBFC Registration", slug: "nbfc", emoji: "🏦" },
-  { name: "Plastic Waste Authorization", slug: "plastic-waste", emoji: "♻️" },
-  { name: "GST Registration", slug: "gst", emoji: "💸" },
-  
-];
 
 interface Benefit {
   id: number;
@@ -74,12 +58,7 @@ const benefits: Benefit[] = [
   },
 ];
 
-export default function RegisterPage() {
-  const [search, setSearch] = useState("");
-
-  const filtered = registrationTypes.filter((type) =>
-    type.name.toLowerCase().includes(search.toLowerCase())
-  );
+export default function PartnershipFirmRegistration() {
   const [progress, setProgress] = useState(0);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
 
@@ -96,54 +75,35 @@ export default function RegisterPage() {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto py-12 px-6">
-      <h1 className="text-4xl font-extrabold mb-6 text-center text-gray-800">
-        Choose a Registration Type
-      </h1>
-
-      {/* Search */}
-      <div className="max-w-md mx-auto mb-10">
-        <input
-          type="text"
-          placeholder="Search registration types..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full px-5 py-3 text-lg rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition"
-        />
+    <div className="flex flex-col md:flex-row">
+      {/* Left Panel */}
+      <div className="md:w-1/3 sticky top-0 h-screen flex flex-col gap-4 justify-center items-center p-6 bg-white">
+        <h2 className="text-3xl font-bold text-[#1D293D] text-center mb-6">
+          Benefits of Partnership Firm Online Registration
+        </h2>
+        <div className="w-3 h-72 bg-gray-200 rounded-full relative overflow-hidden">
+          <div
+            className="absolute top-0 w-2 bg-[#7CD955] rounded-full transition-all duration-200 ease-in-out"
+            style={{ height: `${progress}%` }}
+          />
+        </div>
       </div>
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {filtered.map((type, index) => (
-          <motion.div
-            key={type.slug}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.05 }}
+      {/* Right Panel */}
+      <div className="md:w-2/3 p-6 space-y-12 mt-[100px]">
+        {benefits.map((b, idx) => (
+          <div
+            key={b.id}
+            ref={(el) => {
+              sectionRefs.current[idx] = el as HTMLDivElement | null;
+            }}
+                        className="min-h-screen"
           >
-            <Link
-              href={`/register/${type.slug}`}
-              className="group block p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-transform transform hover:-translate-y-1 hover:border-emerald-500 hover:bg-gradient-to-tr from-emerald-50 to-white"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-3xl">{type.emoji}</span>
-                <span className="text-sm text-gray-400 group-hover:text-emerald-600 transition">
-                  Click to view →
-                </span>
-              </div>
-              <h2 className="mt-4 text-xl font-semibold text-emerald-600 group-hover:text-emerald-700 transition">
-                {type.name}
-              </h2>
-            </Link>
-          </motion.div>
+            <h3 className="text-xl font-bold text-[#1D293D] mb-4">{b.title}</h3>
+            <p className="text-gray-700 leading-relaxed text-lg">{b.content}</p>
+          </div>
         ))}
       </div>
-
-      {filtered.length === 0 && (
-        <p className="text-center text-gray-500 mt-10">
-          No registration types found.
-        </p>
-      )}
     </div>
   );
 }
