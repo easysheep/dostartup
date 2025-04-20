@@ -60,7 +60,7 @@ const benefits: Benefit[] = [
 
 export default function PartnershipFirmRegistration() {
   const [progress, setProgress] = useState(0);
-  const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const handleScroll = () => {
     const scrollTop = window.scrollY;
@@ -95,9 +95,9 @@ export default function PartnershipFirmRegistration() {
           <div
             key={b.id}
             ref={(el) => {
-              sectionRefs.current[idx] = el as HTMLDivElement | null;
+              sectionRefs.current[idx] = el;
             }}
-                        className="min-h-screen"
+            className="min-h-screen"
           >
             <h3 className="text-xl font-bold text-[#1D293D] mb-4">{b.title}</h3>
             <p className="text-gray-700 leading-relaxed text-lg">{b.content}</p>
