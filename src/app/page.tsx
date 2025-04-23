@@ -326,6 +326,166 @@ export default function Home() {
           </form>
         </div>
       </section>
+      {/* Our Expertise */}
+<section className="py-20 bg-white text-gray-800">
+  <div className="max-w-7xl mx-auto px-6">
+    <h2 className="text-3xl font-bold text-center mb-10">Our Expertise</h2>
+    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {[
+        "Startup Legal Advisory",
+        "Trademark & IP Services",
+        "Tax & Financial Compliance",
+        "FSSAI & ISO Certifications",
+        "Private/Public Ltd Incorporation",
+        "Corporate Governance"
+      ].map((expertise, i) => (
+        <motion.div
+          key={i}
+          whileHover={{ scale: 1.05 }}
+          className="bg-gray-100 p-6 rounded-xl shadow-md"
+        >
+          <h3 className="text-xl font-semibold">{expertise}</h3>
+          <p className="mt-2 text-gray-600">
+            We offer expert support in {expertise.toLowerCase()} tailored for modern businesses.
+          </p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* Popular Registration Packages */}
+<section className="py-20 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-6">
+    <h2 className="text-3xl font-bold text-center mb-10">Popular Registration Packages</h2>
+    <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+      {[
+        { name: "Startup Combo Pack", price: "₹5,999", desc: "Company + GST + MSME + Consultancy" },
+        { name: "MSME & IEC Duo", price: "₹2,499", desc: "Perfect for small businesses & exporters" },
+        { name: "Complete Compliance Kit", price: "₹8,999", desc: "Company + GST + Annual Filings" }
+      ].map((pack, i) => (
+        <motion.div
+          key={i}
+          whileHover={{ scale: 1.05 }}
+          className="bg-white p-6 rounded-2xl shadow-lg"
+        >
+          <h3 className="text-xl font-semibold mb-2">{pack.name}</h3>
+          <p className="text-emerald-600 font-bold text-2xl mb-2">{pack.price}</p>
+          <p className="text-gray-600">{pack.desc}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* FAQs */}
+<section className="py-20 bg-white">
+  <div className="max-w-5xl mx-auto px-6">
+    <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+    <div className="space-y-6">
+      {[
+        {
+          q: "How long does company registration take?",
+          a: "Typically, it takes 5-7 working days depending on document submission and approval timelines."
+        },
+        {
+          q: "What documents are required for GST registration?",
+          a: "PAN, Aadhaar, business proof, and bank details are the essentials. We’ll assist you with everything."
+        },
+        {
+          q: "Can I convert my business later?",
+          a: "Yes, we offer services for business structure transitions, such as OPC to Pvt Ltd or LLP."
+        }
+      ].map((faq, i) => (
+        <div key={i} className="border-b pb-4">
+          <h3 className="font-semibold text-lg">{faq.q}</h3>
+          <p className="text-gray-600 mt-2">{faq.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* Media & Press Mentions */}
+{/* <section className="py-20 bg-gray-50">
+  <div className="max-w-6xl mx-auto px-6 text-center">
+    <h2 className="text-3xl font-bold mb-10">Featured In</h2>
+    <div className="flex flex-wrap items-center justify-center gap-10">
+      {["/partner3.jpg", "/partner3.jpg", "/partner3.jpg", "/partner3.jpg"].map((logo, i) => (
+        <img
+          key={i}
+          src={logo}
+          alt="Media Logo"
+          className="h-12 grayscale hover:grayscale-0 transition"
+        />
+      ))}
+    </div>
+  </div>
+</section> */}
+
+{/* Partners & Affiliates */}
+{/* Partners Section */}
+<section className="py-20 bg-white text-center overflow-hidden">
+  <h2 className="text-3xl font-bold text-gray-800 mb-10">Our Trusted Partners</h2>
+  <div className="relative w-full overflow-hidden">
+    <div className="flex gap-16 animate-scroll whitespace-nowrap">
+      {[
+        "/partner1.jpg", "/partner2.jpg", "/partner3.jpg", "/partner4.png",
+        "/partner5.jpg", "/partner6.jpg", "/partner7.jpg", "/partner8.jpg",
+        "/partner9.jpg", "/partner10.jpg",
+        // Repeating for seamless loop
+        "/partner1.jpg", "/partner2.jpg", "/partner3.jpg", "/partner4.png",
+      ].map((src, idx) => (
+        <img
+          key={idx}
+          src={src}
+          alt={`Partner ${idx + 1}`}
+          className="h-24 w-auto object-contain"
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+
+{/* Footer Addition */}
+<footer className="bg-gray-900 text-white py-12">
+  <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 text-sm">
+    <div>
+      <h4 className="font-semibold mb-4">Company</h4>
+      <ul className="space-y-2">
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms & Conditions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 className="font-semibold mb-4">Registrations</h4>
+      <ul className="space-y-2">
+        <li><a href="/register/private-limited-company">Private Ltd</a></li>
+        <li><a href="/register/one-person-company">OPC</a></li>
+        <li><a href="/register/msme">MSME</a></li>
+        <li><a href="/register/gst">GST</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 className="font-semibold mb-4">Certifications</h4>
+      <ul className="space-y-2">
+        <li><a href="/register/iso">ISO</a></li>
+        <li><a href="/register/fssai">FSSAI</a></li>
+        <li><a href="/register/iec">IEC</a></li>
+        <li><a href="/register/psara">PSARA</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 className="font-semibold mb-4">Contact</h4>
+      <p>📍 Delhi, India</p>
+      <p>📞 +91-99996 44807</p>
+      <p>✉️ support@dostartup.in</p>
+    </div>
+  </div>
+</footer>
     </div>
   );
 }
