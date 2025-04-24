@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import clsx from 'clsx';
 import Link from "next/link";
 
-import Types from "./components/Types";
-import Faq from "./components/Faq";
-import Features from "./components/Features";
-import Documents from "./components/Documents";
-import Eligibility from "./components/Eligibility";
-import Overview from "./components/Overview";
-import Benifits from "./components/Benifits";
+import Types from "../../components/Page1/Types";
+import Faq from "../../components/Page1/Faq";
+import Features from "../../components/Page1/Features";
+import Documents from "../../components/Page1/Documents";
+import Eligibility from "../../components/Page1/Eligibility";
+import Overview from "../../components/Page1/Overview";
+import Benifits from "../../components/Page1/Benifits";
 
 const tabs = [
   { name: 'Overview', link: '#overview' },
