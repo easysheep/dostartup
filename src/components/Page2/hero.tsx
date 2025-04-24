@@ -1,15 +1,20 @@
 import React from "react";
 
-const Hero = () => {
+interface HeroProps {
+  title: string;
+  description: string;
+}
+
+const Hero: React.FC<HeroProps> = ({ title, description }) => {
     return  (
         <div className="flex flex-col lg:flex-row gap-8 p-8 bg-gray-50">
           {/* Left Content */}
           <div className="lg:w-2/3 space-y-6">
             <h1 className="text-3xl font-bold text-orange-600">
-              FSSAI State License
+            {title}
             </h1>
             <p className="text-lg text-gray-700">
-              Unsure about legal requirements to get an FSSAI state License? Let our experts streamline the FSSAI state licensing process and reduce legal hurdles for your food business.
+            {description}
             </p>
             
             <div className="space-y-4">

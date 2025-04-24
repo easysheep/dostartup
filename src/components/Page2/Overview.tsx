@@ -5,7 +5,11 @@ import Registration from "./Registration";
 import Timeline from "./Timeline";
 import Why from "./Why";
 
-const Overview = () => {
+interface OverviewProps {
+  overview: { heading: string; content: string | string[] }[]; // Accept sections with headings and content
+}
+
+const Overview: React.FC<OverviewProps> = ({  overview  }) => {
     return (
       <div className="flex flex-col lg:flex-row gap-4 p-4 lg:p-8">
         {/* Sticky Sidebar */}
@@ -25,10 +29,12 @@ const Overview = () => {
         {/* Main Content */}
         <main className="lg:w-3/5 space-y-6">
           <section>
-            <h1 className="text-2xl font-bold">FSSAI State License - An Overview</h1>
-            <p className="mt-2 text-gray-700">
-              FSSAI (Food Safety and Standards Authority of India) is a prominent government-backed entity...
-            </p>
+            {overview.map((overview, index) => (
+              <section key={index}>
+                <h2 className="text-xl font-semibold mt-4">{overview.heading}</h2>
+                <p className="mt-2 text-gray-700">{overview.content}</p>
+              </section>
+            ))}
           </section>
   
           <section>
