@@ -1,7 +1,10 @@
 "use client";
-import PartnershipFirmRegistration from "@/components/Register/PartnershipFirmRegistration";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import PartnershipFirmRegistration from "@/components/Register/PartnershipFirmRegistration";
+// import HowItWorks from "@/components/HowItWorks";
+
 
 const registrationDetails: Record<
   string,
@@ -98,10 +101,37 @@ export default function RegistrationSlugPage() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold mb-4 text-blue-700">{content.title}</h1>
-      <p className="text-gray-700 text-lg mb-6">{content.description}</p>
-      {content.component}
-    </div>
+    <>
+      <div className="max-w-3xl mx-auto py-10 px-4">
+        <motion.h1
+          className="text-3xl font-bold mb-4 text-blue-700"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          {content.title}
+        </motion.h1>
+
+        <motion.p
+          className="text-gray-700 text-lg mb-6"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+        >
+          {content.description}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
+        >
+          {content.component}
+        </motion.div>
+        
+      </div>
+
+      
+    </>
   );
 }
