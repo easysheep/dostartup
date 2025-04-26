@@ -1,0 +1,174 @@
+[
+    {
+      "type": "Hero",
+      "props": {
+        "title": "FSSAI State License – A Comprehensive Guide",
+        "description": "The Food Safety and Standards Authority of India (FSSAI) is the apex regulatory body responsible for overseeing food safety and hygiene across the country. Any Food Business Operator (FBO) in India is legally required to obtain an FSSAI State License before starting operations, as running a food business without proper registration is a legal offense.",
+        "stats": [
+          "10+ Years of Experience",
+          "400+ In-House CAs, CS & Lawyers",
+          "99% SLA Delivery",
+          "10,000+ Pin codes Network in India"
+        ],
+        "counters": [
+          {"label": "Happy Customers", "value": "100000+"},
+          {"label": "Expert Advisors",   "value": "3500+"},
+          {"label": "Branch Offices",    "value": "50+"}
+        ]
+      }
+    },
+    {
+      "type": "TalkToExpert",
+      "props": {
+        "title": "Talk to an Expert",
+        "expert": {
+          "image": "https://via.placeholder.com/80",
+          "expertise": "FSSAI State Level Registration",
+          "rating": "4.8"
+        },
+        "steps": [
+          {"step": "01", "title": "Enquiry Form",    "desc": "Among Asia Top 100 Consulting Firm"},
+          {"step": "02", "title": "Get Consultation", "desc": "Lowest Fees 100,000+ Clients"},
+          {"step": "03", "title": "Service Delivery", "desc": "4.9 Customer Rating 50+ Offices"}
+        ]
+      }
+    },
+    {
+      "type": "Overview",
+      "props": {
+        "overview": [
+          {"heading": "FSSAI State License – An Overview", "content": "FSSAI enforces the provisions of the Food Safety and Standards Act, 2006 to ensure food businesses maintain strict safety standards."},
+          {"heading": "Role of FSSAI", "content": [
+              "Establishing regulations and guidelines for the food industry",
+              "Launching food safety awareness initiatives nationwide",
+              "Issuing instructions and compliance requirements for FBOs",
+              "Setting standards for food testing laboratories",
+              "Collecting and analyzing data on food contaminants",
+              "Advising the Government of India on food-related policies and legislation",
+              "Operating a rapid alert system to detect and respond to food safety risks promptly"
+          ]},
+          {"heading": "Key Benefits of Obtaining an FSSAI State License", "content": [
+              "Enhanced Brand Credibility",
+              "Improved Business Reputation",
+              "Customer Trust and Retention",
+              "Legal Compliance and Stability",
+              "Adoption of Best Practices"
+          ]}
+        ]
+      }
+    },
+    {
+      "type": "Documentation",
+      "props": {
+        "sections": [
+          {"heading": "Who Needs an FSSAI State License?", "items": [
+            "Businesses with annual turnover between Rs.12 lakhs and Rs.20 crores (single state)",
+            "Proprietary food units",
+            "Edible oil production units (solvent extraction)",
+            "Hotels up to 4-star rating",
+            "Dairy operations (500–50,000 L/day)",
+            "Storage facilities (<50,000 MT/year)",
+            "Slaughterhouses (2–50 large animals/day)",
+            "Food processing or re-packing units (100kg–2MT/day)"
+          ]},
+          {"heading": "Documents Required to Obtain FSSAI State License", "items": [
+            "Details of key management personnel",
+            "Passport-size photographs",
+            "Identity & address proof",
+            "PAN Card",
+            "Proof of business premises (owned/rented with NOC)",
+            "Supplier details",
+            "Duly filled Form B",
+            "Machinery & equipment list",
+            "Municipal NOC",
+            "Product information",
+            "IEC (if applicable)",
+            "Form IX & board resolution",
+            "Authorization letter",
+            "Food Safety Management System (FSMS) plan"
+          ]}
+        ]
+      }
+    },
+    {
+      "type": "Registration",
+      "props": {
+        "steps": [
+          {"title": "Document Preparation & Application Filing", "duration": "1–2 Weeks"},
+          {"title": "Online Submission via FoSCoS Portal", "duration": "Up to 1 Week"},
+          {"title": "Scrutiny of Application by FSSAI Officials", "duration": "2–3 Weeks"},
+          {"title": "On-Site Inspection (if required)", "duration": "2–4 Weeks"},
+          {"title": "License Issuance or Rejection", "duration": "1–2 Weeks"}
+        ],
+        "penalties": [
+          {"offense": "Food quality non-compliance", "amount": "Up to Rs.2,00,000 (Rs.25,000 for petty manufacturers)"},
+          {"offense": "Sale of sub-standard food",       "amount": "Up to Rs.5,00,000"},
+          {"offense": "Misbranded food",               "amount": "Up to Rs.3,00,000"},
+          {"offense": "False advertising",             "amount": "Up to Rs.10,00,000"},
+          {"offense": "Extraneous matter in food",     "amount": "Up to Rs.1,00,000"},
+          {"offense": "Non-compliance with FSO directions","amount": "Up to Rs.2,00,000"},
+          {"offense": "Unhygienic manufacturing",      "amount": "Up to Rs.1,00,000"}
+        ]
+      }
+    },
+    {
+      "type": "FeeStructure",
+      "props": {
+        "modes": ["Demand Draft (DD)", "Treasury Challan", "Cash"],
+        "fees": [
+          {"category": "Manufacturers (>1M tons/day or milk 10k–50k L/day)", "fee": "Rs.5,000/-"},
+          {"category": "Manufacturers (<1M tons/day or milk 501–10k L/day)", "fee": "Rs.3,000/-"},
+          {"category": "Hotels (4-star)",                         "fee": "Rs.5,000/-"},
+          {"category": "Food service providers (restaurants, caterers, etc.)", "fee": "Rs.2,000/-"}
+        ]
+      }
+    },
+    {
+      "type": "Timeline",
+      "props": {
+        "milestones": [
+          {"title": "Preparation & Documentation", "duration": "1–2 Weeks", "desc": "Gather all required paperwork and conduct a preliminary evaluation."},
+          {"title": "Application Submission",       "duration": "Up to 1 Week", "desc": "Submit Form B online or at the FSSAI office."},
+          {"title": "Document Review",             "duration": "2–3 Weeks", "desc": "FSSAI reviews your application; respond to queries."},
+          {"title": "Inspection Period",           "duration": "2–4 Weeks", "desc": "On-site inspection by FSSAI officials."},
+          {"title": "License Issuance",            "duration": "1–2 Weeks", "desc": "Receive your FSSAI State License."}
+        ],
+        "total": "Approximately 6 to 12 weeks"
+      }
+    },
+    {
+      "type": "Why",
+      "props": {
+        "title": "Why Choose Corpbiz for FSSAI State License Registration?",
+        "intro": [
+          "Our modern methodology streamlines the licensing process into a strategic asset for your business.",
+          "Our expert team offers seamless guidance, boosting your compliance and growth."
+        ],
+        "points": [
+          "In-depth Compliance Checks",
+          "Over a Decade of Expertise",
+          "99% First-Time Approval Rate",
+          "Boost Brand Reputation",
+          "Effortless & Hassle-free Process"
+        ],
+        "outro": "Delivering State Food License Registration Services in 25+ States"
+      }
+    },
+    {
+      "type": "FAQ",
+      "props": {
+        "items": [
+          {"q": "What is an FSSAI State License?", "a": "Mandatory authorization by FSSAI to certify compliance with food safety standards."},
+          {"q": "How can I obtain an FSSAI State License?", "a": "Submit documents via FoSCoS portal; review and inspection follow."},
+          {"q": "Who requires an FSSAI License?", "a": "Food businesses with turnover > Rs.12 lakh, hotels, dairy units, etc."},
+          {"q": "Can FSSAI impose a penalty?", "a": "Yes – fines range Rs.25k to Rs.10 lakh depending on the violation."},
+          {"q": "What happens if the license expires?", "a": "You lose legal compliance and must renew to avoid penalties."},
+          {"q": "Importance of an FSSAI State License?", "a": "Ensures food safety, builds trust, protects you from legal action."},
+          {"q": "Which Act governs food safety?", "a": "Food Safety and Standards Act, 2006 (FSS Act)."},
+          {"q": "What happens after applying?", "a": "FSSAI reviews documents, may inspect, then issues license."},
+          {"q": "How long does it take to obtain?", "a": "Approximately 6–12 weeks."},
+          {"q": "Central vs State License?", "a": "Central for multi-state/high-volume; State for single-state with turnover limits."}
+        ]
+      }
+    }
+  ]
