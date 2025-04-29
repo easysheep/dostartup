@@ -3,8 +3,6 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import PartnershipFirmRegistration from "@/components/Register/PartnershipFirmRegistration";
-
-// Define icon component with proper types
 type IconName = "company" | "opc" | "partnership" | "certificate" | "default";
 
 const IconComponent = ({ name }: { name: IconName }) => {
