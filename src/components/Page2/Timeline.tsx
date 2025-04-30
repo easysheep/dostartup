@@ -37,7 +37,7 @@ const Timeline: React.FC<TimelineProps> = ({ timeline = [] }) => {
       )}
 
       <section className="mt-12 space-y-6">
-        {timelineData.steps.map((step, index) => (
+        {timelineData?.steps?.map((step, index) => (
           <div
             key={index}
             className="flex flex-col lg:flex-row bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden"
