@@ -135,7 +135,6 @@ const Overview: React.FC<OverviewProps> = ({
             </section>
           ))}
         </section>
-
         {/* Dynamic Sections */}
         <section id="benefits">
           {benefits?.[0]?.heading && (
@@ -147,27 +146,21 @@ const Overview: React.FC<OverviewProps> = ({
             </>
           )}
         </section>
-
         <section id="documents">
           <Documentation documents={documentsRequired} />
         </section>
-
         <section id="registration">
           <Registration procedure={registrationProcedure} />
         </section>
-
         <section id="fees">
           <FeeStructure fees={feesStructure} />
         </section>
-
         <section id="timeline">
           <Timeline timeline={registrationTimeline} />
         </section>
-
         <section id="whyus">
           <Why whyUs={whyUs} />
         </section>
-
         <section id="faq">
           <FAQ faqs={faq} />
         </section>
