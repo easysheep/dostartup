@@ -140,7 +140,7 @@ const Overview: React.FC<OverviewProps> = ({
         <section id="benefits">
           {benefits?.[0]?.heading && (
             <>
-              <h2 className="text-xl font-extrabold text-gray-800">
+              <h2 className="text-xl font-extrabold text-gray-900">
                 {benefits[0].heading}
               </h2>
               <p className="mt-2 text-gray-700">{benefits[0].content}</p>
