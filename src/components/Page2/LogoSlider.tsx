@@ -1,5 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 interface CompanyLogo {
   id: number;
@@ -7,82 +9,114 @@ interface CompanyLogo {
   logoUrl: string;
 }
 
-const LogoSlider: React.FC = () => {
-  // Sample company logos
-  const companyLogos: CompanyLogo[] = [
-    { id: 1, name: 'Company 1', logoUrl: 'https://corpbiz.io/admin/style/images/builder/20211225023524_fia-global.jpg' },
-    { id: 2, name: 'Company 2', logoUrl: 'https://corpbiz.io/admin/style/images/builder/20180628020803_DHFL.jpg' },
-    { id: 3, name: 'Company 3', logoUrl: 'https://corpbiz.io/admin/style/images/builder/20180628020724_bank-of-maharastra.jpg' },
-    { id: 4, name: 'Company 4', logoUrl: 'https://corpbiz.io/admin/style/images/builder/20180628020904_stripe.jpg' },
-    { id: 5, name: 'Company 5', logoUrl: 'https://corpbiz.io/admin/style/images/builder/20211225023617_spinny.png' },
-    { id: 6, name: 'Company 6', logoUrl: 'https://corpbiz.io/admin/style/images/builder/20211225023604_milton.jpg' },
-    { id: 6, name: 'Company 7', logoUrl: 'https://corpbiz.io/admin/style/images/builder/20211225023552_marg-logo.png' },
-    { id: 6, name: 'Company 8', logoUrl: 'https://corpbiz.io/admin/style/images/builder/20180628020851_ku.jpg' },
-    { id: 6, name: 'Company 9', logoUrl: 'https://corpbiz.io/admin/style/images/builder/20211225023538_justdial.jpg' },
-    { id: 6, name: 'Company 10', logoUrl: 'https://corpbiz.io/admin/style/images/builder/20180628020838_30fbric.jpg' },
-    { id: 6, name: 'Company 11', logoUrl: 'https://corpbiz.io/admin/style/images/builder/20180628020825_foodpanda.jpg' },
-  ];
+const logos = [
+  "https://corpbiz.io/admin/style/images/builder/20180628020904_stripe.jpg",
+  "https://corpbiz.io/admin/style/images/builder/20211225023617_spinny.png",
+  "https://corpbiz.io/admin/style/images/builder/20211225023604_milton.jpg",
+  "https://corpbiz.io/admin/style/images/builder/20211225023552_marg-logo.png",
+  "https://corpbiz.io/admin/style/images/builder/20180628020851_ku.jpg",
+  "https://corpbiz.io/admin/style/images/builder/20211225023538_justdial.jpg",
+  "https://corpbiz.io/admin/style/images/builder/20180628020838_30fbric.jpg",
+  "https://corpbiz.io/admin/style/images/builder/20180628020825_foodpanda.jpg",
+];
+const LogoSlider = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number | null>(null);
-  const [logos] = useState([...companyLogos, ...companyLogos]); // Duplicate for infinite effect
-  const speed = 50; // Pixels per second - adjust for desired speed
-
-  useEffect(() => {
-    let position = 0;
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
-      position = (elapsed / 1000) * speed; // Calculate position based on time and speed
-      
-      // Reset position when halfway through duplicated content
-      if (position > slider.scrollWidth / 2) {
-        position = 0;
-        startTime = timestamp; // Reset animation timer
-      }
-
-      slider.style.transform = `translateX(-${position}px)`;
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    let startTime: number | null = null;
-    animationRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, []);
+  // Duplicate the logos for infinite loop effect
+  const duplicatedLogos = [...logos, ...logos];
 
   return (
-    <div className="relative w-full max-w-[1200px] mx-auto overflow-hidden py-5">
-      {/* Slider track */}
-      <div 
-        ref={sliderRef}
-        className="flex whitespace-nowrap"
+    <section ref={ref} className="relative overflow-hidden py-16 bg-white">
+      {/* Gradient fade effects on sides */}
+      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+      
+      {/* Title with decorative elements */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-12 px-4"
       >
-        {logos.map((logo, index) => (
-          <div 
-            key={`${logo.id}-${index}`} 
-            className="inline-flex items-center justify-center px-8"
+        <h2 className="text-3xl md:text-4xl font-bold text-[#1D293D] mb-4">
+          Trusted by Industry Leaders
+        </h2>
+        <div className="w-20 h-1 bg-[#7DD756] mx-auto mb-6" />
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          We partner with the most innovative companies to deliver exceptional results
+        </p>
+      </motion.div>
+
+      {/* Slider container */}
+      <motion.div
+        className="flex"
+        animate={{
+          x: ["0%", "-100%"],
+          transition: {
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 30,
+              ease: "linear",
+            },
+          },
+        }}
+      >
+        {duplicatedLogos.map((logo, index) => (
+          <div
+            key={`${logo}-${index}`}
+            className="flex-shrink-0 px-8 flex items-center justify-center"
+            style={{ width: `${100 / 4}%` }} // Show 4 logos at a time
           >
-            <img 
-              src={logo.logoUrl} 
-              alt={logo.name} 
-              className="max-w-[150px] max-h-[80px] object-contain filter transition-all duration-300" 
-            />
+            <motion.div
+              className="relative h-20 w-full"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.05,
+                ease: "backOut",
+              }}
+              whileHover={{ scale: 1.1 }}
+            >
+              {/* Logo with subtle shadow and hover effect */}
+              <div className="relative h-full w-full flex items-center justify-center p-4">
+                <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-sm hover:shadow-md transition-all duration-300" />
+                <img
+                  src={logo}
+                  alt="Partner logo"
+                  className="relative z-10 max-h-12 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-500"
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
           </div>
         ))}
+      </motion.div>
+
+      {/* Dots indicator */}
+      <div className="flex justify-center mt-12">
+        {logos.slice(0, 4).map((_, index) => (
+          <motion.div
+            key={index}
+            className="w-2 h-2 mx-1 rounded-full bg-gray-300"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.6, 1, 0.6],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              repeatType: "loop",
+              delay: index * 0.2,
+            }}
+          />
+        ))}
       </div>
-      
-      {/* Fade effects */}
-      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
-      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
-    </div>
+    </section>
   );
 };
 
