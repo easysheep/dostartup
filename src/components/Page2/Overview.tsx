@@ -175,7 +175,7 @@ const Overview: React.FC<OverviewProps> = ({
 
       {/* Sticky Form */}
       <aside className="lg:w-1/5 sticky top-[150px] h-fit bg-white rounded-xl p-6">
-        {/* <div className="text-center mb-6">
+        <div className="text-center mb-6">
           <span className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">
             Upto 50% OFF
           </span>
@@ -216,7 +216,7 @@ const Overview: React.FC<OverviewProps> = ({
           >
             GET STARTED NOW
           </button>
-        </form> */}
+        </form>
       </aside>
     </div>
   );

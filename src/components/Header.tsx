@@ -54,9 +54,9 @@ const Header = () => {
         {
           title: "FSSAI & Eating License",
           links: [
-            { name: "FSSAI License", href: "/startup/fssai-license" },
+            { name: "FSSAI License", href: "/" },
             { name: "FSSAI License Renewal", href: "/startup/fssai-renewal" },
-            { name: "FSSAI State License", href: "/startup/fssai-state" },
+            { name: "FSSAI State License", href: "fssai-state-license" },
             { name: "Eating House License", href: "/startup/eating-house" },
             { name: "Central FSSAI License", href: "/startup/fssai-central" },
             {
