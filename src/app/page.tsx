@@ -542,7 +542,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-              
+
       {/* Our Expertise */}
       <section className="py-20 bg-white text-gray-800">
         <div className="max-w-7xl mx-auto px-6">
@@ -869,7 +869,7 @@ export default function Home() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="flex-1 px-4 py-3 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
               required
             />
             <button
@@ -887,7 +887,7 @@ export default function Home() {
       </section>
 
       {/* Footer - Enhanced */}
-      <footer className="bg-gray-900 text-white py-16">
+      {/* <footer className="bg-gray-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-12">
             <div className="space-y-4">
@@ -1142,7 +1142,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
 
       {/* Add global styles for animations */}
       <style jsx global>{`

@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 interface TimelineStep {
   title: string;
@@ -16,115 +18,275 @@ interface TimelineProps {
 }
 
 const Timeline: React.FC<TimelineProps> = ({ timeline = [] }) => {
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  });
+
   if (timeline.length === 0) return null;
 
   const timelineData = timeline[0];
 
   return (
-    <div className="flex flex-col gap-10 px-4 py-8 lg:px-16 bg-gray-50">
-      {/* Heading */}
-      <h1 className="text-3xl font-extrabold text-center text-gray-800">
-        {timelineData.heading || "Timeline to Obtain FSSAI State License"}
-      </h1>
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { 
+          opacity: 1,
+          transition: { duration: 0.6, ease: "easeOut" }
+        }
+      }}
+      className="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100"
+    >
+      {/* Heading Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 10 }}
+        animate={inView ? { 
+          opacity: 1, 
+          y: 0,
+          transition: { delay: 0.2 }
+        } : { opacity: 0, y: 10 }}
+        className="mb-8 text-center"
+      >
+        <h1 className="text-2xl font-bold text-[#1D293D] mb-4 relative inline-block">
+          <span className="relative z-10">
+            {timelineData.heading || "Timeline to Obtain FSSAI State License"}
+          </span>
+          <motion.span 
+            initial={{ scaleX: 0 }}
+            animate={inView ? { 
+              scaleX: 1,
+              transition: { delay: 0.3, duration: 0.4 }
+            } : { scaleX: 0 }}
+            className="absolute bottom-0 left-0 w-full h-1 bg-[#7DD756]/40 z-0 origin-left"
+          />
+        </h1>
+      </motion.section>
 
-      {/* Description */}
+      {/* Description Section */}
       {timelineData.description && (
-        <section className="text-gray-700">
-          <p className="text-lg text-center leading-relaxed max-w-3xl mx-auto">
+        <motion.section
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { 
+            opacity: 1, 
+            y: 0,
+            transition: { delay: 0.3 }
+          } : { opacity: 0, y: 10 }}
+          className="mb-8"
+        >
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={inView ? { 
+              opacity: 1,
+              transition: { delay: 0.4 }
+            } : { opacity: 0 }}
+            className="text-gray-700 text-center leading-relaxed max-w-3xl mx-auto"
+          >
             {timelineData.description}
-          </p>
-        </section>
+          </motion.p>
+        </motion.section>
       )}
 
-      <section className="mt-12 space-y-6">
-        {timelineData?.steps.map((step, index) => (
-          <div
+      {/* Timeline Steps */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={inView ? { 
+          opacity: 1,
+          transition: { delay: 0.4 }
+        } : { opacity: 0 }}
+        className="mt-12 space-y-6"
+      >
+        {timelineData?.steps?.map((step, index) => (
+          <motion.div
             key={index}
-            className="flex flex-col lg:flex-row bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { 
+              opacity: 1, 
+              y: 0,
+              transition: { delay: 0.5 + index * 0.1 }
+            } : { opacity: 0, y: 20 }}
+            className="flex flex-col lg:flex-row bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden"
           >
-            {/* Title box - left on desktop, top on mobile */}
-            <div className="lg:w-1/3 bg-blue-600 text-white p-5 flex flex-col justify-center">
+            {/* Title box */}
+            <div className="lg:w-1/3 bg-[#1D293D] text-white p-5 flex flex-col justify-center">
               <h3 className="text-xl font-bold">{step.title}</h3>
-              <p className="text-sm italic mt-1">{step.duration}</p>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={inView ? { 
+                  opacity: 1,
+                  transition: { delay: 0.6 + index * 0.1 }
+                } : { opacity: 0 }}
+                className="text-sm italic mt-1 text-[#7DD756]"
+              >
+                {step.duration}
+              </motion.p>
             </div>
 
-            {/* Description - right on desktop, bottom on mobile */}
+            {/* Description */}
             <div className="lg:w-2/3 p-5 bg-gray-50">
-              <p className="text-gray-700 leading-relaxed">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={inView ? { 
+                  opacity: 1,
+                  transition: { delay: 0.7 + index * 0.1 }
+                } : { opacity: 0 }}
+                className="text-gray-700 leading-relaxed"
+              >
                 {step.description}
-              </p>
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
         ))}
 
-        {timelineData?.totalTime && (
-          <div className="flex flex-col lg:flex-row bg-orange-50 border-l-4 border-orange-500 rounded-xl shadow-md overflow-hidden mt-6">
-            <div className="lg:w-1/3 bg-orange-500 text-white p-5 flex items-center justify-center">
+        {/* Total Time */}
+        {timelineData.totalTime && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { 
+              opacity: 1, 
+              y: 0,
+              transition: { delay: 0.5 + (timelineData.steps?.length || 0) * 0.1 }
+            } : { opacity: 0, y: 20 }}
+            className="flex flex-col lg:flex-row bg-[#7DD756]/10 border-l-4 border-[#7DD756] rounded-xl shadow-sm overflow-hidden mt-6"
+          >
+            <div className="lg:w-1/3 bg-[#1D293D] text-white p-5 flex items-center justify-center">
               <h3 className="text-xl font-bold">Total Estimated Time</h3>
             </div>
-            <div className="lg:w-2/3 p-5">
-              <p className="text-gray-800 text-lg font-medium">
+            <div className="lg:w-2/3 p-5 flex items-center">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={inView ? { 
+                  opacity: 1,
+                  transition: { delay: 0.6 + (timelineData.steps?.length || 0) * 0.1 }
+                } : { opacity: 0 }}
+                className="text-gray-800 text-lg font-medium"
+              >
                 {timelineData.totalTime}
-              </p>
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
         )}
-      </section>
+      </motion.section>
 
       {/* Consultation Form */}
-      <section className="mt-10 max-w-2xl mx-auto">
-        <div className="bg-white border border-gray-200 p-8 rounded-xl shadow-lg">
-          <h3 className="text-2xl font-bold text-center text-gray-800 mb-2">
-            Book a Free Consultation
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { 
+          opacity: 1, 
+          y: 0,
+          transition: { delay: 0.6 + (timelineData.steps?.length || 0) * 0.1 }
+        } : { opacity: 0, y: 20 }}
+        className="mt-10 max-w-2xl mx-auto"
+      >
+        <div className="bg-white border border-gray-200 p-8 rounded-xl shadow-sm">
+          <h3 className="text-2xl font-bold text-center text-[#1D293D] mb-2 relative inline-block">
+            <span className="relative z-10">Book a Free Consultation</span>
+            <motion.span 
+              initial={{ scaleX: 0 }}
+              animate={inView ? { 
+                scaleX: 1,
+                transition: { delay: 0.7 + (timelineData.steps?.length || 0) * 0.1, duration: 0.4 }
+              } : { scaleX: 0 }}
+              className="absolute bottom-0 left-0 w-full h-1 bg-[#7DD756]/40 z-0 origin-left"
+            />
           </h3>
-          <p className="text-center text-gray-600 mb-6">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={inView ? { 
+              opacity: 1,
+              transition: { delay: 0.8 + (timelineData.steps?.length || 0) * 0.1 }
+            } : { opacity: 0 }}
+            className="text-center text-gray-600 mb-6"
+          >
             Get a response within 1 hour
-          </p>
+          </motion.p>
           <form className="space-y-5">
-            <input
-              type="text"
-              placeholder="Your Name*"
-              className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-            <input
-              type="email"
-              placeholder="Email Address*"
-              className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-            <div className="flex gap-2 items-center">
+            {['Your Name*', 'Email Address*'].map((placeholder, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                animate={inView ? { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: { delay: 0.9 + index * 0.1 + (timelineData.steps?.length || 0) * 0.1 }
+                } : { opacity: 0, y: 10 }}
+              >
+                <input
+                  type={index === 1 ? 'email' : 'text'}
+                  placeholder={placeholder}
+                  className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D293D]"
+                  required
+                />
+              </motion.div>
+            ))}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { 
+                opacity: 1, 
+                y: 0,
+                transition: { delay: 1.1 + (timelineData.steps?.length || 0) * 0.1 }
+              } : { opacity: 0, y: 10 }}
+              className="flex gap-2 items-center"
+            >
               <span className="px-3 py-3 bg-gray-100 border border-gray-300 rounded-lg text-gray-700">
                 +91
               </span>
               <input
                 type="tel"
                 placeholder="Mobile Number*"
-                className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D293D]"
                 required
               />
-            </div>
-            <select
-              className="w-full border border-gray-300 px-4 py-3 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { 
+                opacity: 1, 
+                y: 0,
+                transition: { delay: 1.2 + (timelineData.steps?.length || 0) * 0.1 }
+              } : { opacity: 0, y: 10 }}
             >
-              <option value="">Select State</option>
-              <option value="Delhi">Delhi</option>
-              <option value="Maharashtra">Maharashtra</option>
-            </select>
-            <button
-              type="submit"
-              className="w-full bg-orange-500 hover:bg-orange-600 transition duration-200 text-white py-3 rounded-lg font-semibold shadow-sm cursor-pointer"
+              <select
+                className="w-full border border-gray-300 px-4 py-3 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#1D293D]"
+                required
+              >
+                <option value="">Select State</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Maharashtra">Maharashtra</option>
+              </select>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { 
+                opacity: 1, 
+                y: 0,
+                transition: { delay: 1.3 + (timelineData.steps?.length || 0) * 0.1 }
+              } : { opacity: 0, y: 10 }}
             >
-              SEND NOW
-            </button>
-            <p className="text-xs text-center text-gray-400 mt-2">
+              <button
+                type="submit"
+                className="w-full bg-[#1D293D] hover:bg-[#2a3a52] transition duration-200 text-white py-3 rounded-lg font-semibold shadow-sm cursor-pointer"
+              >
+                SEND NOW
+              </button>
+            </motion.div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={inView ? { 
+                opacity: 1,
+                transition: { delay: 1.4 + (timelineData.steps?.length || 0) * 0.1 }
+              } : { opacity: 0 }}
+              className="text-xs text-center text-gray-400 mt-2"
+            >
               Your information is safe with us. No spam, ever.
-            </p>
+            </motion.p>
           </form>
         </div>
-      </section>
-    </div>
+      </motion.section>
+    </motion.div>
   );
 };
 
