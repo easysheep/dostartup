@@ -37,7 +37,7 @@ const Timeline: React.FC<TimelineProps> = ({ timeline = [] }) => {
       )}
 
       <section className="mt-12 space-y-6">
-        {timelineData.steps.map((step, index) => (
+        {timelineData?.steps.map((step, index) => (
           <div
             key={index}
             className="flex flex-col lg:flex-row bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden"
@@ -57,7 +57,7 @@ const Timeline: React.FC<TimelineProps> = ({ timeline = [] }) => {
           </div>
         ))}
 
-        {timelineData.totalTime && (
+        {timelineData?.totalTime && (
           <div className="flex flex-col lg:flex-row bg-orange-50 border-l-4 border-orange-500 rounded-xl shadow-md overflow-hidden mt-6">
             <div className="lg:w-1/3 bg-orange-500 text-white p-5 flex items-center justify-center">
               <h3 className="text-xl font-bold">Total Estimated Time</h3>
