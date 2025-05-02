@@ -56,7 +56,7 @@ export type PageContentType = {
       ],
       benefits: [
         { title: 'Regulatory Compliance', img: 'https://corpbiz.io/img/adv_icon1.webp', description: 'GST registration safeguards interests by ensuring legal and tax compliance.' },
-        { title: 'Easy Compliance', description: 'Helps streamline filing returns and online payments.' },
+        { title: 'Easy Compliance', img: 'https://corpbiz.io/img/adv_icon1.webp',description: 'Helps streamline filing returns and online payments.' },
         { title: 'Maintains Transparency', description: 'Allows maintaining updated records and operational transparency.' },
         { title: 'Legal Protection', description: 'Safeguards legal and regulatory standards of the business.' },
       ],
