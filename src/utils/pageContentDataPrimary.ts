@@ -383,4 +383,108 @@ export const pageContent: Record<string, PageContentType> = {
       },
     ],
   },
+
+  "eating-house-license": {
+    title: "Eating House License Registration",
+    description:
+      "An Eating House License is an essential legal authorization required to operate any establishment that serves food or beverages for public consumption. It must be obtained along with other key regulatory approvals to ensure lawful operation of restaurants, cafés, food trucks, dhabas, takeaways, and similar outlets.",
+    overview: [
+      {
+        heading: "Overview of Eating House License Registration",
+        content:
+          "An Eating House License is an essential legal authorization required to operate any establishment that serves food or beverages for public consumption. It is a mandatory license for anyone looking to start a food-related business, and it must be obtained along with other key regulatory approvals.",
+      },
+      {
+        heading: "What is an Eating House?",
+        content:
+          "An Eating House includes any premises where food and drinks are prepared, served, or sold for consumption by the public. This covers a wide range of food service establishments such as restaurants, cafes, food trucks, dhabas, takeaways, and other similar outlets.",
+      },
+      {
+        heading: "Issuing Authority for Eating House License",
+        content:
+          "As per the Delhi Police Act, an Eating House License must be applied for through the local police department or the Commissioner of Police. The license is granted after thorough verification of documents and premises by the concerned authority.",
+      },
+    ],
+    benefits: [],
+    documentsRequired: [
+      {
+        heading:
+          "Mandatory Documents Required for Eating House License Registration",
+        content:
+          "- Valid identity proof (Aadhar Card, Passport, Voter ID, Driving License, or PAN Card)\n- Address proof (Aadhar Card, Passport, electricity bill, landline bill, rent/lease deed, or property ownership papers)\n- Certificate of Incorporation (for companies)\n- Details of directors (DIR-12) or board resolution nominating the authorized signatory\n- Ownership proof, tenancy agreement, or lease deed of the business premises\n- Copy of paid water and electricity bills\n- Building safety certificate issued by a certified architect or empanelled structural engineer\n- Electrical safety certificate from the Electrical Inspector or authorized contractor\n- Lift fitness certificate (if applicable)\n- Receipt of property tax payment\n- Proof of payment of regularization charges (if applicable)\n- Receipt of land-use conversion charges (if applicable)\n- Parking charges receipt (if in-house parking is insufficient)\n- Proof of source of water supply\n- FSSAI Food License\n- GST Registration Certificate\n- PAN of the proprietor, company, or firm\n- Medical fitness certificates of all employees with photographs\n- Police verification of all employees\n- Environmental clearance certificate\n- Affidavits as per police and municipal requirements\n- Smoking area details in compliance with COTPA Act, 2003\n- Valid tobacco license (if applicable)\n- Pest control records\n- Rainwater harvesting system details\n- Layout plan of the premises",
+      },
+    ],
+    registrationProcedure: [
+      {
+        heading: "Step-by-Step Procedure to Obtain an Eating House License",
+        content:
+          "1. Fill out the online application form on the state police or licensing portal.\n2. Upload all required documents (identity proofs, establishment details, safety certificates, declarations, etc.).\n3. Attend document and premises verification by the Additional Commissioner of Police (Licensing).\n4. Follow up regularly with the licensing department to respond to any additional queries.\n5. Upon satisfactory verification and inspection, the Eating House License is issued within 30–60 days.",
+        penalties: {
+          description: "",
+          penaltyTable: [],
+        },
+      },
+    ],
+    feesStructure: [],
+    registrationTimeline: [],
+    whyUs: [
+      {
+        heading:
+          "Why Choose DoStartup for Your Eating House License Registration?",
+        description: [
+          "Our team has years of experience handling government registrations and licenses across India, ensuring a smooth and efficient process.",
+          "We prioritize timely submissions and follow-ups to help you get your license within the committed time frame.",
+          "We simplify the complex paperwork, reducing errors and eliminating unnecessary back-and-forth with authorities.",
+          "Our professionals provide expert legal guidance on all compliance norms essential for food business licensing.",
+        ],
+        points: [
+          "Extensive experience in government registrations and licensing",
+          "Timely license delivery within promised timelines",
+          "Streamlined documentation process with minimal delays",
+          "Expert legal guidance for full compliance",
+          "End-to-end support from application to issuance",
+        ],
+        footerText: "",
+      },
+    ],
+    faq: [
+      {
+        question:
+          "What is the usual time required to obtain an Eating House License?",
+        answer:
+          "Generally, it takes about 30 to 60 days from application submission to license issuance, depending on documentation, inspection, and internal verification.",
+      },
+      {
+        question: "What is the validity period of an Eating House License?",
+        answer:
+          "The Eating House License is typically valid for up to three years, although the duration may vary based on state regulations and related licenses such as the Health Trade License.",
+      },
+      {
+        question: "Who issues the Eating House License?",
+        answer:
+          "The Additional Commissioner of Police (Licensing) or equivalent local police authority is responsible for issuing the Eating House License.",
+      },
+      {
+        question: "Can I operate without an Eating House License?",
+        answer:
+          "No, operating an eating house or food service business without a valid Eating House License is illegal and may attract penalties or closure notices.",
+      },
+      {
+        question:
+          "Is an FSSAI food license mandatory along with the Eating House License?",
+        answer:
+          "Yes, securing a valid FSSAI food license is mandatory for any entity involved in food preparation, distribution, or service.",
+      },
+      {
+        question: "How do I apply for an Eating House License?",
+        answer:
+          "You must file the application online through the designated state police licensing portal, upload all supporting documents, and pay the applicable fees.",
+      },
+      {
+        question: "What are common reasons for application rejection?",
+        answer:
+          "Applications may be rejected due to incomplete documentation, inaccurate information, non-compliance with safety regulations, or pending dues/taxes related to the premises.",
+      },
+    ],
+  },
 };
