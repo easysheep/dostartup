@@ -849,7 +849,7 @@ export default function Home() {
                   key={idx}
                   src={src}
                   alt={`Partner ${idx + 1}`}
-                  className="h-16 sm:h-20 md:h-24 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  className="h-16 sm:h-20 md:h-24 w-auto object-contain  transition-all duration-300"
                 />
               ))}
             </div>

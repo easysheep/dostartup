@@ -88,7 +88,7 @@ const LogoSlider = () => {
                 <img
                   src={logo}
                   alt="Partner logo"
-                  className="relative z-10 max-h-12 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-500"
+                  className="relative z-10 max-h-12 w-auto object-contain filter  transition-all duration-500"
                   loading="lazy"
                 />
               </div>

@@ -195,7 +195,7 @@ export default function Benefits({ items }: BenefitsProps) {
                 whileTap={{ scale: 0.98 }}
                 className="border border-gray-700 rounded-xl p-6 flex items-start gap-5 bg-[#1D293D] hover:border-[#7AD955] transition-all group"
               >
-                {item.img && (
+                {/* {item.img && (
                   <div className="p-2 bg-[#7AD955] rounded-lg group-hover:bg-white transition-colors">
                     <img 
                       src={item.img} 
@@ -205,7 +205,7 @@ export default function Benefits({ items }: BenefitsProps) {
                       className="transition-colors group-hover:invert" 
                     />
                   </div>
-                )}
+                )} */}
                 <div>
                   <h3 className="font-semibold text-xl text-white">{item.title}</h3>
                   <p className="text-gray-300 mt-2">{item.description}</p>

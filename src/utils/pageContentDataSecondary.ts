@@ -35,6 +35,8 @@ export type PageContentType = {
   };
 };
 
+
+
 export const pageContent: Record<string, PageContentType> = {
   "gst-registration": {
     overview: {
@@ -440,5 +442,4 @@ export const pageContent: Record<string, PageContentType> = {
       ],
     },
   },
-  
 };

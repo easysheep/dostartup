@@ -165,7 +165,8 @@ const staggerContainer = {
   }
 };
 
-const SectionHeader = ({ title, subtitle }: { title: string; subtitle: string }) => {
+
+const SectionHeader = ({ title, subtitle}: { title: string; subtitle: string }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.1 });
 
@@ -363,7 +364,7 @@ export default function Documents({ data }: DocumentsProps) {
       </section>
       
       <section className="py-20 px-5 sm:px-8 bg-gradient-to-br from-[#1D293D] via-[#152238] to-[#0F172A]">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto text-white">
           <SectionHeader 
             title="Consequences for Non-Compliance with GST Registration" 
             subtitle="Violations attract the following penalties:" 

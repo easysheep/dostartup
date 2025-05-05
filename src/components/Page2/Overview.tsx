@@ -331,7 +331,7 @@ const Overview: React.FC<OverviewProps> = ({
           </div>
         </div>
 
-        <div className="p-6">
+        <div className="p-2">
           <div className="text-center mb-6">
             <h3 className="text-xl font-bold text-[#1D293D] mt-2">
               Free Expert Consultation
